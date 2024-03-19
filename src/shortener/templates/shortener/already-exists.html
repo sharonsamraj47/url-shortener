@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ object.shortcode }} | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to bottom,  #000000, #1315b0); /* Dynamic gradient background */
+        color: white; /* Set text color to white */
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Vertical centering */
+    }
+    /* Set the width of the content */
+    .content-container {
+        text-align: center;
+        width: 800px;
+        margin: 0 auto;
+    }
+    /* Adjust the size and padding of the links */
+    .btn-primary {
+        margin-top: 10px;
+        padding: 10px 20px;
+    }
+</style>
+
+<div class='container'>
+    <div class="content-container">
+        <h1>Already Exists</h1>
+        <p>{{ object.url }}</p>
+        {% if object.clickevent.count %}
+            <p>Count: {{ object.clickevent.count }}</p>
+        {% endif %}
+        <p><a href='{{ object.get_short_url }}'>{{ object.get_short_url }}</a></p>
+        <a class='btn btn-primary' href="/">+NEW</a>
+    </div>
+</div>
+{% endblock content %}

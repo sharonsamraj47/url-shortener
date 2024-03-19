@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(to bottom, #000000, #1315b0); /* Dynamic gradient background */
+        color: white; /* Set text color to white */
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Vertical centering */
+    }
+    .content {
+        width: 400px; /* Adjusted width for the content */
+    }
+    /* Set the width of the input field */
+    input[type="text"] {
+        width: calc(100% - 20px); /* Adjusted width for the input field */
+        padding: 8px; /* Add padding to improve appearance */
+        margin-bottom: 10px; /* Add space between the input field and button */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        border: none; /* Remove default input border */
+        background-color: #444; /* Darker background for the input */
+        color: white; /* Set text color to white */
+        border-radius: 5px; /* Add border radius for rounded corners */
+    }
+    .btn-container {
+        text-align: center; /* Center align the button */
+    }
+    .btn-primary {
+        margin-top: 10px; /* Add margin to the top of the button */
+        padding: 10px 20px; /* Add padding to the button */
+        border: none; /* Remove default button border */
+        background-color: #084a91; /* Blue button color */
+        color: white; /* Button text color */
+        border-radius: 5px; /* Add border radius for rounded corners */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Add box shadow for a subtle effect */
+        transition: all 0.3s ease; /* Add transition for smoother effect */
+    }
+    .btn-primary:hover {
+        background-color: #0056b3; /* Darker blue color on hover */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Increase shadow on hover */
+    }
+    h1 {
+        text-align: center; /* Center align the heading */
+    }
+   p{
+        text-align: center;
+   }
+</style>
+
+<div class='container'>
+    <div class="content">
+        <h1>{{ title }}</h1>
+            <p class="lead">Shorten the URL</p>
+        <form method='POST' action="."> {% csrf_token %}
+            <!-- Adjusted input field width and added padding -->
+            <input type="text" name="url" placeholder="Enter URL" required>
+            <div class="btn-container">
+                <input class='btn btn-primary' type="submit" value="Shorten -->">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
